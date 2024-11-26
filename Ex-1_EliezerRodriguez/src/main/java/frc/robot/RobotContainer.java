@@ -61,7 +61,7 @@ public class RobotContainer {
 
   private void runSmth(){
     new JoystickButton(driveJoystick, 1)
-      .whileTrue(new PrintCommand("Hello, I exist!!!"));
+      .onTrue(new PrintCommand("Hello, I exist!!!"));
 
   }
   /**
