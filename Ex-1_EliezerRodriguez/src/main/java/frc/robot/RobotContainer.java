@@ -69,9 +69,12 @@ public class RobotContainer {
       .onFalse(new PrintCommand("Bye, I don't exist D:"));
 
     new JoystickButton(driveJoystick, 2)
-      .onTrue(new DeferredCommand(() -> new PrintCommand("X: " + driveJoystick.getRawAxis(0) + " and Y: " + driveJoystick.getRawAxis(1)), Set.of()));  
+      // .onTrue(new DeferredCommand(() -> new PrintCommand("X: " + driveJoystick.getRawAxis(0) + " and Y: " + driveJoystick.getRawAxis(1)), Set.of()));
+      .onTrue(new DeferredCommand(() -> new PrintCommand("X: " + driveJoystick.getRawAxis(3) ), Set.of()));  
 
   }
+
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
