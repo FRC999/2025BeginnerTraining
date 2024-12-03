@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.AnalogMotorCommand;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.MotorForwardCommand;
@@ -24,7 +25,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  private Joystick driveStick;
+   public static Joystick driveStick;
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public final static DriveSubsystem driveSubsystem = new DriveSubsystem();
@@ -35,6 +36,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    
     // Configure the trigger bindings
     configureBindings();
   }
@@ -48,7 +50,7 @@ public class RobotContainer {
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() {
+  public void configureBindings() {
     driveStick = new Joystick(0);
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
@@ -56,6 +58,10 @@ public class RobotContainer {
 
     new JoystickButton(driveStick, 2)
       .onTrue(new MotorForwardCommand())
+      .onFalse(new StopMotorCommand());
+
+    new JoystickButton(driveStick, 1)
+      .onTrue(new AnalogMotorCommand())
       .onFalse(new StopMotorCommand());
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
