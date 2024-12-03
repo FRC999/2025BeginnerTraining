@@ -13,7 +13,15 @@ public class DriveSubsystem extends SubsystemBase {
   private SparkMax motor;
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    motor = new SparkMax(0, MotorType.kBrushless);
+    motor = new SparkMax(4, MotorType.kBrushless);
+  }
+
+  public void startMotor() {
+    motor.set(0.3);
+  }
+
+  public void stopMotor() {
+    motor.set(0);
   }
 
   @Override
