@@ -20,7 +20,7 @@ public class AnalogMotorCommand extends Command {
   @Override
   public void initialize() {}
 
-  public static double val;
+  private double val;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
