@@ -17,20 +17,7 @@ public class DriveSubsystem extends SubsystemBase {
   private SparkMax leadMotor;
   private SparkMax followMotor;
 
-  private SparkBaseConfig leadingMotor;
-  private SparkBaseConfig followingMotor;
-
-  private SparkBase leadingMotorBase;
-  private SparkBase followingMotorBase;
-  
-  private SparkBase.ResetMode leadingMotorReset;
-  private SparkBase.ResetMode followingMotorReset;
-
-  private SparkBase.PersistMode leadingMotorPersist;
-  private SparkBase.PersistMode followingMotorPersist;
-
   /** Creates a new DriveSubsystem. */
-
   public DriveSubsystem() {
     leadMotor = new SparkMax(57, MotorType.kBrushless);
     followMotor = new SparkMax(54, MotorType.kBrushless);
