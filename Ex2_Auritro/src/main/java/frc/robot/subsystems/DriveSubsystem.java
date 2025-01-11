@@ -21,6 +21,7 @@ public class DriveSubsystem extends SubsystemBase {
     motor2 = new SparkMax(54, MotorType.kBrushless);
     var maxConfig = new SparkMaxConfig(); // var takes place of SparkMaxConfig
     maxConfig.follow(motor1);
+  
     //maxConfig.follow(motor1, true);
     motor2.configure(maxConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
   }
