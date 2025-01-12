@@ -4,7 +4,9 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 
 public class SmartDashboardSubsystem extends SubsystemBase {
   /** Creates a new SmartDashboardSubsystem. */
@@ -13,5 +15,16 @@ public class SmartDashboardSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    updateEncoder();
+  }
+
+  public void updateEncoder(){
+    SmartDashboard.putNumber("Pigeon Pitch", RobotContainer.pigeonSubsystem.getPitch());
+    SmartDashboard.putNumber("Pigeon Roll", RobotContainer.pigeonSubsystem.getRoll());
+    SmartDashboard.putNumber("Pigeon Yaw", RobotContainer.pigeonSubsystem.getYaw());
+
+    SmartDashboard.putNumber("NavX Pitch", RobotContainer.navXSubsystem.getPitch());
+    SmartDashboard.putNumber("NavX Roll", RobotContainer.navXSubsystem.getRoll());
+    SmartDashboard.putNumber("NavX Yaw", RobotContainer.navXSubsystem.getYaw());
   }
 }
