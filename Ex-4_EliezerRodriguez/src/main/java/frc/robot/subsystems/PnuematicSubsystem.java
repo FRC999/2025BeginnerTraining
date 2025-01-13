@@ -35,9 +35,9 @@ public class PnuematicSubsystem extends SubsystemBase {
     }
   
     public void goBackward() {
-      solenoid.set(DoubleSolenoid.Value.kForward);
-  
+      solenoid.set(DoubleSolenoid.Value.kForward);  
     }
+
     public PneumaticsControlModule PCMValue(){
       return PCM;
     }

@@ -15,10 +15,10 @@ public class SmartDashboardSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    updateEncoder();
+    updateSmartDashboard();
   }
 
-  public void updateEncoder(){
+  public void updateSmartDashboard(){
     SmartDashboard.putNumber("Pigeon Pitch", RobotContainer.pigeonSubsystem.getPitch());
     SmartDashboard.putNumber("Pigeon Roll", RobotContainer.pigeonSubsystem.getRoll());
     SmartDashboard.putNumber("Pigeon Yaw", RobotContainer.pigeonSubsystem.getYaw());
