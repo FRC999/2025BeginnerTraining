@@ -18,7 +18,7 @@ public class PnuematicSubsystem extends SubsystemBase {
   /** Creates a new PnuematicSubsystem. */
   public PnuematicSubsystem() {
     compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-    solenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,7);
+    solenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 7,0);
     runCompressor();
   }
 
@@ -31,11 +31,11 @@ public class PnuematicSubsystem extends SubsystemBase {
     }
 
     public void goForward() {
-      solenoid.set(DoubleSolenoid.Value.kReverse);
+      solenoid.set(DoubleSolenoid.Value.kForward);
     }
   
     public void goBackward() {
-      solenoid.set(DoubleSolenoid.Value.kForward);  
+      solenoid.set(DoubleSolenoid.Value.kReverse);  
     }
 
     public PneumaticsControlModule PCMValue(){
