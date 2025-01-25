@@ -19,7 +19,7 @@ public class ColorSensorSubsystem extends SubsystemBase {
   public final I2C.Port i2cPort = I2C.Port.kMXP;
   private ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
   public static boolean isColorSensor;
-  double IR = colorSensor.getIR();
+  double InfraredSensor = colorSensor.getIR();
 
   private final ColorMatch colorMatcher = new ColorMatch();
   private final Color BlueThing = new Color(0.143, 0.427, 0.429);
