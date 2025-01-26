@@ -18,10 +18,15 @@ public class DriveManuallyCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
-
+  public static double moveY;
+  public static double moveX;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    moveY = RobotContainer.driveStick.getRawAxis(1);
+    moveX = RobotContainer.driveStick.getRawAxis(0);
+    RobotContainer.driveSubsystem.dynamicSpeedChange(moveY,moveX);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

@@ -20,10 +20,10 @@ public class DriveSubsystem extends SubsystemBase {
   private SparkMax motorTwo;
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    motorOne = new SparkMax(57, MotorType.kBrushless);
-    motorTwo = new SparkMax(54, MotorType.kBrushless);
+    motorOne = new SparkMax(54, MotorType.kBrushless);
+    motorTwo = new SparkMax(57, MotorType.kBrushless);
     
-    var motorOneConfig = new SparkMaxConfig();
+    SparkMaxConfig motorOneConfig = new SparkMaxConfig();
     SparkMaxConfig motorTwoConfig = new SparkMaxConfig();
 
     motorOne.configure(motorOneConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
