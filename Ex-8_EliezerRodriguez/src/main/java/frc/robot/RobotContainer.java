@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.CheckCommand;
 import frc.robot.commands.DriveManuallyCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.StopRobotCommand;
@@ -27,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
@@ -36,6 +38,8 @@ public class RobotContainer {
 
   public static Joystick joystick;
   public static JoystickButton button;
+
+  public static boolean canDrive;
 
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -48,6 +52,7 @@ public class RobotContainer {
     button = new JoystickButton(joystick, 1);
     // Configure the trigger bindings
     configureBindings();
+    ultrasonicSubsystem.setDefaultCommand(new CheckCommand());
   }
 
   /**
@@ -70,8 +75,6 @@ public class RobotContainer {
 
     button.onTrue(new DriveManuallyCommand())
           .onFalse(new StopRobotCommand());
-      
-    
   }
 
   /**

@@ -25,9 +25,11 @@ public class DriveManuallyCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if (RobotContainer.canDrive == true){
     move = RobotContainer.joystick.getRawAxis(1);
     otherMove = RobotContainer.joystick.getRawAxis(0);
     RobotContainer.driveSubsystem.dynamicSpeedChange(move, otherMove);
+    }
   }
 
   // Called once the command ends or is interrupted.

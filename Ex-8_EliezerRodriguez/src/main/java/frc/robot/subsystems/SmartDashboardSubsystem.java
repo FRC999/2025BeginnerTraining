@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 
 public class SmartDashboardSubsystem extends SubsystemBase {
   /** Creates a new SmartDashboardSubsystem. */
@@ -16,6 +15,6 @@ public class SmartDashboardSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
 
-    SmartDashboard.putNumber("Ultrasonic: ", RobotContainer.ultrasonicSubsystem.getDistanceInInches());
+    SmartDashboard.putNumber("Ultrasonic: ", UltrasonicSubsystem.getDistance());
   }
 }
