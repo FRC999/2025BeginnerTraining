@@ -9,33 +9,37 @@ import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
+import edu.wpi.first.util.sendable.SendableRegistry;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveSubsystem extends SubsystemBase {
-  private SparkMax leadMotor;
-  private SparkMax followMotor;
+  private DifferentialDrive robotChassis;
+  private SparkMax firstMotor;
+  private SparkMax secondMotor;
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
-    leadMotor = new SparkMax(54, MotorType.kBrushless);
-    followMotor = new SparkMax(57, MotorType.kBrushless);
+    firstMotor = new SparkMax(54, MotorType.kBrushless);
+    secondMotor = new SparkMax(57, MotorType.kBrushless);
     
-    SparkMaxConfig maxConfig = new SparkMaxConfig();
-    maxConfig.follow(leadMotor);
+    SparkMaxConfig maxConfigFirst = new SparkMaxConfig();
+    SparkMaxConfig maxConfigSecond = new SparkMaxConfig();
+
+    firstMotor.configure(maxConfigFirst, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+    maxConfigSecond.inverted(true);
+    secondMotor.configure(maxConfigSecond, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+
+    robotChassis = new DifferentialDrive(firstMotor, secondMotor);
+
+    SendableRegistry.addChild(robotChassis, firstMotor);
+    SendableRegistry.addChild(robotChassis, secondMotor);
     //followMotor.configure(maxConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
   }
 
-  public void startMotor() {
-    leadMotor.set(0.3);
-  }
-
-  public void stopMotor() {
-    leadMotor.set(0);
-  }
-
-  public void analogMotor(double val){
-    leadMotor.set(val);
-  }
+public void dynamicSpeedChange (double move, double moveOther) {
+  robotChassis.tankDrive(move, moveOther);
+}
 
   @Override
   public void periodic() {

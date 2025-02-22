@@ -8,24 +8,26 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class MotorForwardCommand extends Command {
-  /** Creates a new MotorForward. */
-  public MotorForwardCommand() {
+public class DriveManuallyCommand extends Command {
+  /** Creates a new DriveManuallyCommand. */
+  public DriveManuallyCommand() {
     addRequirements(RobotContainer.driveSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-
-    //RobotContainer.driveSubsystem.startMotor();
-
-  }
+  public void initialize() {}
+  public static double move;
+  public static double moveOther;
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    move = RobotContainer.joystick.getRawAxis(1);
+    moveOther = RobotContainer.joystick.getRawAxis(0);
+    RobotContainer.driveSubsystem.dynamicSpeedChange(move, moveOther);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
