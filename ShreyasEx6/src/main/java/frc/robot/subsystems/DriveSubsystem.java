@@ -6,9 +6,15 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class SmartDashboardSubsystem extends SubsystemBase {
-  /** Creates a new YawSubsystem. */
-  public SmartDashboardSubsystem() {}
+public class DriveSubsystem extends SubsystemBase {
+  /** Creates a new DriveSubsystem. */
+  public SparkMax motor = new SparkMax(57 MotorType.kBrushless);
+  public DriveSubsystem() {
+    SparkMaxConfig smc = new SparkMaxConfig();
+    motor.configure(smc ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    
+
+  }
 
   @Override
   public void periodic() {

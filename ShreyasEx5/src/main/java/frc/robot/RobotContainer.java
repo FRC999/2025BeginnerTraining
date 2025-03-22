@@ -11,6 +11,9 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.NavXSubsystem;
 import frc.robot.subsystems.PigeonSubsystem;
 import frc.robot.subsystems.SmartDashboardSubsystem;
+
+import com.studica.frc.AHRS.NavXComType;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;

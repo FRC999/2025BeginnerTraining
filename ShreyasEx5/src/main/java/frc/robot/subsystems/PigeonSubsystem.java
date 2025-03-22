@@ -4,26 +4,31 @@
 
 package frc.robot.subsystems;
 
+
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class NavXSubsystem extends SubsystemBase {
-  /** Creates a new PitchSubsystem. */
-  public NavXSubsystem() {
+public class PigeonSubsystem extends SubsystemBase {
+  public TalonSRX talon = new TalonSRX(4);
+  public PigeonIMU pigeon = new PigeonIMU(talon);
 
-  }
+
+  /** Creates a new PigeonSubsystem. */
+  public PigeonSubsystem() {}
 
   public double getPitch() {
-    return 0.0;
+    return pigeon.getPitch();
   }
 
   public double getYaw() {
-    return 0.0;
+    return pigeon.getYaw();
   }
 
   public double getRoll() {
-    return 0.0;
+    return pigeon.getRoll();
   }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

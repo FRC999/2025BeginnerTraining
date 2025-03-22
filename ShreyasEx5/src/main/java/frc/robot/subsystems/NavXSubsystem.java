@@ -10,25 +10,22 @@ import com.studica.frc.AHRS.NavXComType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class NavXSubsystem extends SubsystemBase {
-  /** Creates a new NavXSubsystem. */
   public AHRS navX = new AHRS(NavXComType.kMXP_SPI);
+  /** Creates a new NavXSubsystem. */
   public NavXSubsystem() {}
-
   public double getPitch() {
     return navX.getPitch();
-  }
-
-  public double getRoll() {
-    return navX.getRoll();
   }
 
   public double getYaw() {
     return navX.getYaw();
   }
 
+  public double getRoll() {
+    return navX.getRoll();
+  }
   @Override
   public void periodic() {
-    
     // This method will be called once per scheduler run
   }
 }
