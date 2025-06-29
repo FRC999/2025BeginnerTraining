@@ -4,37 +4,36 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.spark.SparkBase;
+//import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkMaxConfig;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 
 public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveSubsystem. */
-  public static SparkMax spark;
-  private Spark pidController;
+  private static SparkMax sparkMotor;
+  private SparkClosedLoopController sparkController;
+  //private RelativeEncoder sparkEncoder;
     public DriveSubsystem() {
-      spark = new SparkMax(1,MotorType.kBrushless);
-      SparkMaxConfig config = new SparkMaxConfig();
-      spark.configure(config,SparkBase.ResetMode.kResetSafeParameters,SparkBase.PersistMode.kPersistParameters);
+      sparkMotor = new SparkMax(1,MotorType.kBrushless);
+      sparkController = sparkMotor.getClosedLoopController();
+      //sparkEncoder = sparkMotor.getAlternateEncoder();
 
-      PIDController  = new spark.getPIDController();
+      // spark = new Spark(1,MotorType.kBrushless);
+      // SparkMaxConfig config = new SparkMaxConfig();
+      // spark.configure(config,SparkBase.ResetMode.kResetSafeParameters,SparkBase.PersistMode.kPersistParameters);
 
-    }
+      // PIDController  = spark.getPIDController();
 
-    public boolean pressed(XboxController c){
-        return c.getXButton();
     }
   
     public void moveMotor1000(){
-        while (spark.getAbsoluteEncoder().getPosition() <= 1000){
-            spark.set(.3);
-        }
-        spark.set(0);
-  }
+        sparkController.setReference(1000, ControlType.kPosition);
+    }
 
 
   @Override
